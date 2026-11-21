@@ -4,45 +4,38 @@
 #
 # Copyright (c) 2020 Ignacio Vizzo, all rights reserved
 
-@test "[task_2] Check bin/task_2 existance" 
-{
+@test "[task_2] Check bin/task_2 existance" {
   run test -e bin/task_2
   (( status == 0 ))
 }
 
-@test "[task_2] Check 0  inputs" 
-{
+@test "[task_2] Check 0  inputs" {
   run bin/task_2
   (( status == 1 ))
 }
 
 
-@test "[task_2] Check 1  inputs" 
-{
+@test "[task_2] Check 1  inputs" {
   run bin/task_2
   (( status == 1 ))
 }
 
-@test "[task_2] Check 2  inputs" 
-{
+@test "[task_2] Check 2  inputs" {
   run bin/task_2 0.txt 0.txt
   (( status == 0 ))
 }
 
-@test "[task_2] Check 2+ inputs" 
-{
+@test "[task_2] Check 2+ inputs" {
   run bin/task_2 0 0 0
   (( status == 1 ))
 }
 
-@test "[task_2] Check input arguments format" 
-{
+@test "[task_2] Check input arguments format" {
   run bin/task_2 err.txt err.txt
   (( status == 1 ))
 }
 
-@test "[task_2] Check supported extensions" 
-{
+@test "[task_2] Check supported extensions" {
   run bin/task_2 00.tRt 00.txt
   run bin/task_2 00.txt 00.Txt
   (( status == 1 ))

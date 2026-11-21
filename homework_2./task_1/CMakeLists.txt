@@ -26,4 +26,9 @@ cmake ..
 
 # 4. 编译
 make -j$(nproc)
+
+cd /home/btgg/Desktop/CV/homework_2./task_1
+clang-format -i src/main.cpp
+cd build
+make -j$(nproc)
 ]]
