@@ -6,29 +6,26 @@
 
 namespace image_browser {
 
-/// Some Utility Name Types that will make the code more readable
+/// 一些实用名称类型，它们将使代码更具可读性
 using ScoredImage = std::tuple<std::string, float>;
 using ImageRow = std::array<ScoredImage, 3>;
 
 /**
- * @brief This function is in charge to add a full row in the web application, A
- * row consists always of 3 columns, each one contains one image with a given
- * score.
+ * @brief 此函数负责在 Web 应用程序中添加完整的一行。一行始终由 3 列组成，
+ * 每列包含一张带有给定分数的图像。
  *
- * @param row          A set with 3 images plus the score of each one.
- * @param first_row    If it's the very first row, the first image should be
- * highlighted.
+ * @param row          包含 3 张图像以及每张图像分数的一组数据。
+ * @param first_row    如果这是第一行，则第一张图像应被高亮显示。
  */
-void AddFullRow(const ImageRow& row, bool first_row = false);
+void AddFullRow(const ImageRow& row, bool first_row );
 
 /**
- * @brief Create a Image Browser application, This function should be completely
- * self containded and should take all the necessary actions to create an image
- * web browser application.
+ * @brief 创建一个图像浏览器应用程序。此函数应完全自包含，并应采取所有必要操作
+ * 来创建图像 Web 浏览器应用程序。
  *
- * @param title      The title of the web application.
- * @param stylesheet The CSS style, if any.
- * @param rows       A set of ImageRow, with all the given images to show.
+ * @param title      Web 应用程序的标题。
+ * @param stylesheet CSS 样式（如果有）。
+ * @param rows       一组 ImageRow，包含所有要显示的给定图像。
  */
 void CreateImageBrowser(const std::string& title, const std::string& stylesheet,
                         const std::vector<ImageRow>& rows);

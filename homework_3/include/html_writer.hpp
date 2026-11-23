@@ -70,6 +70,9 @@ void CloseRow();
  */
 void AddImage(const std::string& img_path, float score, bool highlight = false);
 
+void OpenHead();
+
+void CloseHead();
 }  // namespace html_writer
 
 #endif  // HTML_WRITER_H_
