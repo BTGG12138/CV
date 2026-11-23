@@ -28,14 +28,14 @@ void CloseDocument();
  * @param stylesheet CSS 文件所在的路径，通常为
  * "<path>/style.css"
  */
-void AddCSSStyle(const std::string& stylesheet);
+void AddCSSStyle(const std::string &stylesheet);
 
 /**
  * @brief 此函数向你的 Web 应用程序添加标题
  *
  * @param title 包含标题的字符串，长度可任意。
  */
-void AddTitle(const std::string& title);
+void AddTitle(const std::string &title);
 
 /**
  * @brief 这将在你的 Web 应用程序中打开一个 <body> 子句。
@@ -68,11 +68,11 @@ void CloseRow();
  * @param score 给定图像的分数
  * @param highlight 如果是第一张图像，则必须为 true。
  */
-void AddImage(const std::string& img_path, float score, bool highlight = false);
+void AddImage(const std::string &img_path, float score, bool highlight = false);
 
 void OpenHead();
 
 void CloseHead();
-}  // namespace html_writer
+} // namespace html_writer
 
-#endif  // HTML_WRITER_H_
+#endif // HTML_WRITER_H_

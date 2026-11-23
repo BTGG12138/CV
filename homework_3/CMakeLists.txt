@@ -32,6 +32,9 @@ target_link_libraries(create_image_browser PUBLIC image_browser)
 set_target_properties(create_image_browser PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
+
+include(cmake/ClangFormat.cmake)
+include(cmake/StaticAnalyzers.cmake)
 #[[
 # 1. 进入 task_1 目录
 cd /home/btgg/Desktop/CV/homework_3
@@ -49,4 +52,7 @@ cd /home/btgg/Desktop/CV/homework_3
 clang-format -i src/main.cpp
 cd build
 make -j$(nproc)
+
+find src include \( -name '*.cpp' -o -name '*.hpp' -o -name '*.h' \) \
+    -exec clang-format -i -style=file {} +
 ]]
