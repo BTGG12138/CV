@@ -20,7 +20,7 @@ enable_testing()
 add_subdirectory(tests)
 #[[
 # 1. 进入 task_1 目录
-cd /home/btgg/Desktop/CV/homework_3
+cd /home/btgg/Desktop/CV/homework_4
 
 # 2. 创建 build 文件夹，进去
 mkdir build && cd build
@@ -31,7 +31,7 @@ cmake ..
 # 4. 编译
 make -j$(nproc)
 
-cd /home/btgg/Desktop/CV/homework_3
+cd /home/btgg/Desktop/CV/homework_4
 clang-format -i src/main.cpp
 cd build
 make -j$(nproc)
