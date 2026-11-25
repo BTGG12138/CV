@@ -7,5 +7,5 @@ add_executable(${TEST_BINARY}
                test_ipb_algorithm.cpp
               )
 
-target_link_libraries(${TEST_BINARY} ipb_algorithm Catch2::Catch2WithMain)
+target_link_libraries(${TEST_BINARY} Catch2::Catch2WithMain)
 catch_discover_tests(${TEST_BINARY})

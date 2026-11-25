@@ -5,15 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_library(homework_4 STATIC
-    src/homework_4.cpp
-)
-
-target_include_directories(homework_4 PUBLIC
-    ${PROJECT_SOURCE_DIR}/include
-)
-
-include(cmake/ClangFormat.cmake)
+#include(cmake/ClangFormat.cmake)
 include(cmake/StaticAnalyzers.cmake)
 
 enable_testing()
@@ -26,7 +18,7 @@ cd /home/btgg/Desktop/CV/homework_4
 mkdir build && cd build
 
 # 3. 执行cmake，读取上一级的 CMakeLists.txt
-cmake ..
+cmake .. >> ~/Desktop/cmake_log.txt 2>&1
 
 # 4. 编译
 make -j$(nproc)
