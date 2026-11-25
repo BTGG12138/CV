@@ -1,6 +1,8 @@
 #include<vector>
+#include<string>
 #include<iostream>
 #include<algorithm>
+#include<cctype>
 using std::cout;
 using std::endl;
 namespace ipb
@@ -10,11 +12,11 @@ namespace ipb
     {
     private:
         std::string name_;
-        std::vector<T> data_;
+        std::vector<T> vec_;
     public:
         named_vector()=default;
-        named_vector(std::string name,std::vector<T> data):
-        name_(std::move(name)),data_(std::move(data)){};
+        named_vector(std::string name,std::vector<T> vec):
+        name_(std::move(name)),vec_(std::move(vec)){}
         named_vector operator=(const named_vector& give)
         {
             if(this==&give)
@@ -22,7 +24,7 @@ namespace ipb
                 return *this;
             }
             name_=give.name_;
-            data_=give.data_;
+            vec_=give.vec_;
             return *this;
         }
         const std::string name()const
@@ -35,19 +37,19 @@ namespace ipb
         }
         const std::vector<T> vector()const
         {
-            return data_;
+            return vec_;
         }
         std::vector<T> vector()
         {
-            return data_;
+            return vec_;
         }
         int size()
         {
-            return name_.size()+data_.size();
+            return name_.size()+vec_.size();
         }
         bool empty()
         {
-            if( name_.empty() and data_.empty())
+            if( name_.empty() and vec_.empty())
             {
                 return true;
             }
@@ -55,15 +57,15 @@ namespace ipb
         }
         const size_t capacity() const
         {
-            return data_.capacity();
+            return vec_.capacity();
         }
-        void resize(size_t size)
+        void resize(const size_t size)
         {
-            data_.resize(size);
+            vec_.resize(size);
         }
-        void reserve(size_t size)
+        void reserve(const size_t size)
         {
-            data_.reserve(size);
+            vec_.reserve(size);
         }
     };
 
@@ -125,9 +127,9 @@ namespace ipb
     template<typename T=int>
     void fill(named_vector<int>& v,const T& n)
     {
-        for(T num:v.vector())
+        for(size_t i=0;i<v.vector().size();i++)
         {
-            num=n;
+            v.vector()[i]=n;
         }
     }
 
@@ -150,16 +152,16 @@ namespace ipb
     {
         for(T num:v.vector())
         {
-            cout<<num<<" ";
+            cout<<num<<" "<<endl;
         }
     }
 
     template<typename T=int>
     void toupper(named_vector<int>& v)
     {
-        for(char& cha:v.name())
+        for(char& c:v.name())
         {
-            cha = static_cast<char>(std::toupper(static_cast<unsigned char>(cha)));
+            c= static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
         }
     }
 
@@ -172,12 +174,67 @@ namespace ipb
     template<typename T=int>
     void rotate(named_vector<int>& v,const int& n)
     {
-        
+       std::rotate(v.vector().begin(),v.vector().begin()+n,v.vector().end());
     }
 
     template<typename T=int>
     void reverse(named_vector<int>& v)
     {
-
+        std::reverse(v.vector().begin(),v.vector().end());
     }
 }
+/*
+#include<vector>
+#include<string>
+#include<iostream>
+#include<algorithm>
+#include<cctype>
+using std::cout;
+using std::endl;
+namespace ipb
+{
+    template<typename T=int>
+    class named_vector
+    {
+    private:
+        std::string name_;
+        std::vector<T> vec_;
+    public:
+        named_vector()=default;
+        named_vector(std::string name,std::vector<T> data);
+        named_vector operator=(const named_vector& give);
+        const std::string name()const;
+        std::string name();
+        const std::vector<T> vector()const;
+        std::vector<T> vector();
+        int size();
+        bool empty();
+        const size_t capacity() const;
+        void resize(const size_t size);
+        void reserve(const size_t size);
+    };
+
+    template<typename T=int>
+    T accumulate(const named_vector<int>& v);
+    template<typename T=int>
+    int count(const named_vector<int>& v,const T& n);
+    template<typename T=int>
+    bool all_even(const named_vector<int>& v);
+    template<typename T=int>
+    void clamp(named_vector<int>& v,const T& l,const T& r);
+    template<typename T=int>
+    void fill(named_vector<int>& v,const T& n);
+    template<typename T=int>
+    bool find(const named_vector<int>& v,const T& n); 
+    template<typename T=int>
+    void print(const named_vector<int>& v);
+    template<typename T=int>
+    void toupper(named_vector<int>& v);
+    template<typename T=int>
+    void sort(named_vector<int>& v);
+    template<typename T=int>
+    void rotate(named_vector<int>& v,const int& n);
+    template<typename T=int>
+    void reverse(named_vector<int>& v);
+}
+*/

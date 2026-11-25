@@ -11,17 +11,15 @@ include(cmake/StaticAnalyzers.cmake)
 enable_testing()
 add_subdirectory(tests)
 #[[
-# 1. 进入 task_1 目录
 cd /home/btgg/Desktop/CV/homework_4
-
-# 2. 创建 build 文件夹，进去
 mkdir build && cd build
-
-# 3. 执行cmake，读取上一级的 CMakeLists.txt
-cmake .. >> ~/Desktop/cmake_log.txt 2>&1
-
-# 4. 编译
-make -j$(nproc)
+{
+    echo "=== CMake 配置 ==="
+    cmake .. 2>&1 | tee build_log.txt
+    
+    echo -e "\n=== 编译 ==="
+    make -j$(nproc) 2>&1 | tee -a build_log.txt
+} > build_full_log.txt 2>&1
 
 cd /home/btgg/Desktop/CV/homework_4
 clang-format -i src/main.cpp
